@@ -1,1 +1,16 @@
-<h1>Hello world!</h1>
+<div class="col-md-12">
+    <ul class="nav col-md-2">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="col-md-12">
+            <a routerLink="">Главная</a>
+        </li>
+        <li routerLinkActive="active" class="col-md-12">
+            <a routerLink="/items">Товары</a>
+        </li>
+        <li routerLinkActive="active" class="col-md-12">
+            <a routerLink="/contacts">Контакты</a>
+        </li>
+    </ul>
+    <div class="col-md-10">
+        <router-outlet></router-outlet>
+    </div>
+</div>

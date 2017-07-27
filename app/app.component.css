@@ -1,0 +1,11 @@
+.nav {
+    display: block;
+}
+
+.active a {
+    color: red;
+}
+
+.nav li a {
+    text-align: center;
+}

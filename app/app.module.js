@@ -8,7 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
+var home_component_1 = require("./home/home.component");
+var items_component_1 = require("./items/items.component");
+var contacts_component_1 = require("./contacts/contacts.component");
+var not_found_component_1 = require("./not-found/not-found.component");
+var appRoutes = [
+    { path: '', component: home_component_1.HomeComponent },
+    { path: 'items', component: items_component_1.ItemsComponent },
+    { path: 'contacts', component: contacts_component_1.ContactsComponent },
+    { path: '**', component: not_found_component_1.NotFoundComponent }
+];
 var AppModule = (function () {
     function AppModule() {
     }
@@ -16,8 +27,8 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
-        declarations: [app_component_1.AppComponent],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule.forRoot(appRoutes)],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent, not_found_component_1.NotFoundComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
