@@ -2,23 +2,26 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent }   from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ItemsComponent } from './items/items.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ItemComponent } from './item/item.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'items', component: ItemsComponent },
-    { path: 'contacts', component: ContactsComponent }
+    { path: 'items/:id', component: ItemComponent },
+    { path: 'contacts', component: ContactsComponent },
     { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes) ],
-    declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, NotFoundComponent ],
+    imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpModule ],
+    declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, NotFoundComponent, ItemComponent ],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

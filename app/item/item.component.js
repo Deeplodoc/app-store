@@ -9,30 +9,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var item_service_1 = require("../services/item.service");
-var ItemsComponent = (function () {
-    function ItemsComponent(itemService) {
+var item_1 = require("../models/item");
+var ItemComponent = (function () {
+    function ItemComponent(activateRoute, itemService) {
+        this.activateRoute = activateRoute;
         this.itemService = itemService;
-        this.items = [];
+        this.item = new item_1.Item();
     }
-    ItemsComponent.prototype.ngOnInit = function () {
+    ItemComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    ItemComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.itemService.getItems()
-            .subscribe(function (data) { return _this.items = data; }, function (error) {
+        var id;
+        this.subscription = this.activateRoute.params
+            .subscribe(function (params) { return id = params['id']; });
+        this.itemService.getById(id)
+            .subscribe(function (data) { return _this.item = data; }, function (error) {
             _this.error = error;
             console.log(error);
         });
     };
-    return ItemsComponent;
+    return ItemComponent;
 }());
-ItemsComponent = __decorate([
+ItemComponent = __decorate([
     core_1.Component({
-        selector: 'items-app',
-        templateUrl: 'app/items/items.component.html',
-        styleUrls: ['app/items/items.component.css'],
+        selector: 'item-info',
+        templateUrl: 'app/item/item.component.html',
         providers: [item_service_1.ItemService]
     }),
-    __metadata("design:paramtypes", [item_service_1.ItemService])
-], ItemsComponent);
-exports.ItemsComponent = ItemsComponent;
-//# sourceMappingURL=items.component.js.map
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        item_service_1.ItemService])
+], ItemComponent);
+exports.ItemComponent = ItemComponent;
+//# sourceMappingURL=item.component.js.map

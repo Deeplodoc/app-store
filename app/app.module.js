@@ -9,14 +9,17 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
+var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var items_component_1 = require("./items/items.component");
 var contacts_component_1 = require("./contacts/contacts.component");
 var not_found_component_1 = require("./not-found/not-found.component");
+var item_component_1 = require("./item/item.component");
 var appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'items', component: items_component_1.ItemsComponent },
+    { path: 'items/:id', component: item_component_1.ItemComponent },
     { path: 'contacts', component: contacts_component_1.ContactsComponent },
     { path: '**', component: not_found_component_1.NotFoundComponent }
 ];
@@ -27,8 +30,8 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule.forRoot(appRoutes)],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent, not_found_component_1.NotFoundComponent],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule.forRoot(appRoutes), http_1.HttpModule],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent, not_found_component_1.NotFoundComponent, item_component_1.ItemComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
