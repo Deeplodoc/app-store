@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { ItemService } from '../services/item.service';
+import { BasketService } from '../services/basket.service';
 import { Item } from '../models/item';
 
 @Component({
@@ -15,7 +16,15 @@ export class ItemComponent implements OnInit, OnDestroy{
     private error: any;
 
     constructor(private activateRoute: ActivatedRoute,
-                private itemService: ItemService){}
+                private itemService: ItemService,
+                private basketService: BasketService){}
+
+    addToBasket(): void{
+        console.log('add to basket');
+        this.basketService.add(this.item);
+        console.log(this.item);
+        console.log(this.basketService.getBasket());
+    }
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();

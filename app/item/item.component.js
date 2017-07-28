@@ -11,13 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var item_service_1 = require("../services/item.service");
+var basket_service_1 = require("../services/basket.service");
 var item_1 = require("../models/item");
 var ItemComponent = (function () {
-    function ItemComponent(activateRoute, itemService) {
+    function ItemComponent(activateRoute, itemService, basketService) {
         this.activateRoute = activateRoute;
         this.itemService = itemService;
+        this.basketService = basketService;
         this.item = new item_1.Item();
     }
+    ItemComponent.prototype.addToBasket = function () {
+        console.log('add to basket');
+        this.basketService.add(this.item);
+        console.log(this.item);
+        console.log(this.basketService.getBasket());
+    };
     ItemComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
@@ -41,7 +49,8 @@ ItemComponent = __decorate([
         providers: [item_service_1.ItemService]
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        item_service_1.ItemService])
+        item_service_1.ItemService,
+        basket_service_1.BasketService])
 ], ItemComponent);
 exports.ItemComponent = ItemComponent;
 //# sourceMappingURL=item.component.js.map

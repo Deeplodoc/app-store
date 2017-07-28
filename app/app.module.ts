@@ -10,6 +10,9 @@ import { ItemsComponent } from './items/items.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ItemComponent } from './item/item.component';
+import { BasketComponent } from './basket/basket.component';
+
+import { BasketService } from './services/basket.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -21,7 +24,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpModule ],
-    declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, NotFoundComponent, ItemComponent ],
+    declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, NotFoundComponent, ItemComponent, BasketComponent ],
+    providers: [ BasketService ],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -16,6 +16,8 @@ var items_component_1 = require("./items/items.component");
 var contacts_component_1 = require("./contacts/contacts.component");
 var not_found_component_1 = require("./not-found/not-found.component");
 var item_component_1 = require("./item/item.component");
+var basket_component_1 = require("./basket/basket.component");
+var basket_service_1 = require("./services/basket.service");
 var appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'items', component: items_component_1.ItemsComponent },
@@ -31,7 +33,8 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule.forRoot(appRoutes), http_1.HttpModule],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent, not_found_component_1.NotFoundComponent, item_component_1.ItemComponent],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent, not_found_component_1.NotFoundComponent, item_component_1.ItemComponent, basket_component_1.BasketComponent],
+        providers: [basket_service_1.BasketService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
