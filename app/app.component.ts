@@ -16,5 +16,8 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.basketCount = this.basketService.getBasketCount();
+        this.basketService.onAddedToBasket.subscribe((count: number) => {
+            this.basketCount = count;
+        });
     }
 }

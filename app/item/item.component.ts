@@ -20,10 +20,7 @@ export class ItemComponent implements OnInit, OnDestroy{
                 private basketService: BasketService){}
 
     addToBasket(): void{
-        console.log('add to basket');
         this.basketService.add(this.item);
-        console.log(this.item);
-        console.log(this.basketService.getBasket());
     }
 
     ngOnDestroy(): void {

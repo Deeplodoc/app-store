@@ -16,7 +16,11 @@ var AppComponent = (function () {
         this.basketCount = 0;
     }
     AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.basketCount = this.basketService.getBasketCount();
+        this.basketService.onAddedToBasket.subscribe(function (count) {
+            _this.basketCount = count;
+        });
     };
     return AppComponent;
 }());

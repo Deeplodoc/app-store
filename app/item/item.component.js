@@ -21,10 +21,7 @@ var ItemComponent = (function () {
         this.item = new item_1.Item();
     }
     ItemComponent.prototype.addToBasket = function () {
-        console.log('add to basket');
         this.basketService.add(this.item);
-        console.log(this.item);
-        console.log(this.basketService.getBasket());
     };
     ItemComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
