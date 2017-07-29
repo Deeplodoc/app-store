@@ -13,27 +13,41 @@ var basket_1 = require("../models/basket");
 var BasketService = (function () {
     function BasketService() {
         this.basket = new basket_1.Basket();
-        this.onAddedToBasket = new core_1.EventEmitter();
+        this.onChangeBasketCount = new core_1.EventEmitter();
     }
     BasketService.prototype.add = function (item) {
-        if (item != null && item != undefined) {
-            this.basket.items.push(item);
-            this.basket.totalPrice += item.price;
-            this.onAddedToBasket.emit(this.basket.items.length);
-        }
+        this.basket.addItem(item);
+        this.changeBasket();
+    };
+    BasketService.prototype.remove = function (id) {
+        this.basket.removeItem(id);
+        this.changeBasket();
     };
     BasketService.prototype.getBasket = function () {
         return this.basket;
     };
+    BasketService.prototype.getItems = function () {
+        return this.basket.getItems();
+    };
     BasketService.prototype.getBasketCount = function () {
-        return this.basket.items.length;
+        return this.basket.getItemsCount();
+    };
+    BasketService.prototype.getTotalPrice = function () {
+        return this.basket.getTotalPrice();
+    };
+    BasketService.prototype.changeBasket = function () {
+        var chanchedBasket = {
+            itemCount: this.basket.getItemsCount(),
+            totalPrice: this.basket.getTotalPrice()
+        };
+        this.onChangeBasketCount.emit(chanchedBasket);
     };
     return BasketService;
 }());
 __decorate([
     core_1.Output(),
     __metadata("design:type", Object)
-], BasketService.prototype, "onAddedToBasket", void 0);
+], BasketService.prototype, "onChangeBasketCount", void 0);
 BasketService = __decorate([
     core_1.Injectable()
 ], BasketService);

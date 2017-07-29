@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
 import { ItemService } from '../services/item.service';
+import { BasketService } from '../services/basket.service';
 import { Item } from '../models/item';
 
 @Component({
@@ -13,7 +14,8 @@ export class ItemsComponent implements OnInit{
     items: Item[] = [];
     error: any;
 
-    constructor(private itemService: ItemService){}
+    constructor(private itemService: ItemService,
+        private basketService: BasketService){}
 
     ngOnInit(): void {
         this.itemService.getItems()
@@ -24,5 +26,9 @@ export class ItemsComponent implements OnInit{
                 console.log(error); 
             }
         )
+    }
+
+    onAddToBasket(item: Item): void{
+        this.basketService.add(item);
     }
 }

@@ -1,1 +1,16 @@
-<h2>Baket</h2>
+<h2></h2>
+<div class="col-md-12">
+    <div class="col-md-12">
+        <span class="pull-right">Сумма заказа: {{totalPrice}}</span>
+    </div>
+    <div class="col-md-3 basketContainer" *ngFor="let item of items">
+        <img class="col-md-2" src="{{item.picture}}" />
+        <div class="col-md-10">
+            <h4>{{item.name}}</h4>
+            <span>{{item.price | currency:'USD':true}}</span>
+        </div>
+        <div class="col-md-12">
+            <button class="btn btn-danger pull-right" (click)="removeItem(item.id)">Удалить</button>
+        </div>
+    </div>
+</div>

@@ -6,3 +6,8 @@ div.itemContainer:hover {
 div.itemContainer {
     margin-bottom: 10px;
 }
+
+div.itemContainer button {
+    margin-bottom: 5px;
+    margin-left: 5px;
+}

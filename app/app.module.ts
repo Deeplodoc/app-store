@@ -19,12 +19,15 @@ const appRoutes: Routes = [
     { path: 'items', component: ItemsComponent },
     { path: 'items/:id', component: ItemComponent },
     { path: 'contacts', component: ContactsComponent },
+    { path: 'basket', component: BasketComponent },
     { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpModule ],
-    declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, NotFoundComponent, ItemComponent, BasketComponent ],
+    declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, 
+        NotFoundComponent, ItemComponent, BasketComponent 
+    ],
     providers: [ BasketService ],
     bootstrap:    [ AppComponent ]
 })

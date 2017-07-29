@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var item_service_1 = require("../services/item.service");
+var basket_service_1 = require("../services/basket.service");
 var ItemsComponent = (function () {
-    function ItemsComponent(itemService) {
+    function ItemsComponent(itemService, basketService) {
         this.itemService = itemService;
+        this.basketService = basketService;
         this.items = [];
     }
     ItemsComponent.prototype.ngOnInit = function () {
@@ -23,6 +25,9 @@ var ItemsComponent = (function () {
             console.log(error);
         });
     };
+    ItemsComponent.prototype.onAddToBasket = function (item) {
+        this.basketService.add(item);
+    };
     return ItemsComponent;
 }());
 ItemsComponent = __decorate([
@@ -32,7 +37,8 @@ ItemsComponent = __decorate([
         styleUrls: ['app/items/items.component.css'],
         providers: [item_service_1.ItemService]
     }),
-    __metadata("design:paramtypes", [item_service_1.ItemService])
+    __metadata("design:paramtypes", [item_service_1.ItemService,
+        basket_service_1.BasketService])
 ], ItemsComponent);
 exports.ItemsComponent = ItemsComponent;
 //# sourceMappingURL=items.component.js.map

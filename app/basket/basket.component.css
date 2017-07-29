@@ -1,0 +1,11 @@
+div.basketContainer:hover {
+    box-shadow: 3px 3px 6px -3px #000000;
+}
+
+div.basketContainer {
+    margin-bottom: 10px;
+}
+
+div.basketContainer button{
+    margin-bottom: 5px;
+}

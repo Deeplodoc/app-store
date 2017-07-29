@@ -23,6 +23,7 @@ var appRoutes = [
     { path: 'items', component: items_component_1.ItemsComponent },
     { path: 'items/:id', component: item_component_1.ItemComponent },
     { path: 'contacts', component: contacts_component_1.ContactsComponent },
+    { path: 'basket', component: basket_component_1.BasketComponent },
     { path: '**', component: not_found_component_1.NotFoundComponent }
 ];
 var AppModule = (function () {
@@ -33,7 +34,9 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule.forRoot(appRoutes), http_1.HttpModule],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent, not_found_component_1.NotFoundComponent, item_component_1.ItemComponent, basket_component_1.BasketComponent],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent,
+            not_found_component_1.NotFoundComponent, item_component_1.ItemComponent, basket_component_1.BasketComponent
+        ],
         providers: [basket_service_1.BasketService],
         bootstrap: [app_component_1.AppComponent]
     })

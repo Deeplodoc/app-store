@@ -14,12 +14,13 @@ var AppComponent = (function () {
     function AppComponent(basketService) {
         this.basketService = basketService;
         this.basketCount = 0;
+        this.totalPrice = 0;
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.basketCount = this.basketService.getBasketCount();
-        this.basketService.onAddedToBasket.subscribe(function (count) {
-            _this.basketCount = count;
+        this.basketService.onChangeBasketCount.subscribe(function (item) {
+            _this.basketCount = item.itemCount;
+            _this.totalPrice = item.totalPrice;
         });
     };
     return AppComponent;
