@@ -10,17 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var basket_1 = require("../models/basket");
+var session_service_1 = require("../services/session.service");
+var session_name_1 = require("../enums/session.name");
 var BasketService = (function () {
-    function BasketService() {
+    function BasketService(sessionService) {
+        this.sessionService = sessionService;
         this.basket = new basket_1.Basket();
-        this.onChangeBasketCount = new core_1.EventEmitter();
+        this.сhangeBasketCount = new core_1.EventEmitter();
+        this.getBasketSession();
     }
     BasketService.prototype.add = function (item) {
         this.basket.addItem(item);
+        this.sessionService.set(session_name_1.SessionName.Basket, this.basket);
         this.changeBasket();
     };
     BasketService.prototype.remove = function (id) {
         this.basket.removeItem(id);
+        this.sessionService.set(session_name_1.SessionName.Basket, this.basket);
         this.changeBasket();
     };
     BasketService.prototype.getBasket = function () {
@@ -40,16 +46,24 @@ var BasketService = (function () {
             itemCount: this.basket.getItemsCount(),
             totalPrice: this.basket.getTotalPrice()
         };
-        this.onChangeBasketCount.emit(chanchedBasket);
+        this.сhangeBasketCount.emit(chanchedBasket);
+    };
+    BasketService.prototype.getBasketSession = function () {
+        var sessionBasket = this.sessionService.get(session_name_1.SessionName.Basket);
+        if (sessionBasket != null || sessionBasket != undefined) {
+            this.basket.items = sessionBasket.items;
+            this.basket.totalPrice = sessionBasket.totalPrice;
+        }
     };
     return BasketService;
 }());
 __decorate([
     core_1.Output(),
     __metadata("design:type", Object)
-], BasketService.prototype, "onChangeBasketCount", void 0);
+], BasketService.prototype, "\u0441hangeBasketCount", void 0);
 BasketService = __decorate([
-    core_1.Injectable()
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [session_service_1.SessionService])
 ], BasketService);
 exports.BasketService = BasketService;
 //# sourceMappingURL=basket.service.js.map

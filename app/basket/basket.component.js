@@ -20,7 +20,7 @@ var BasketComponent = (function () {
         var _this = this;
         this.items = this.basketServices.getItems();
         this.totalPrice = this.basketServices.getTotalPrice();
-        this.basketServices.onChangeBasketCount.subscribe(function (item) {
+        this.basketServices.сhangeBasketCount.subscribe(function (item) {
             _this.totalPrice = item.totalPrice;
         });
     };

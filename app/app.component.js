@@ -13,12 +13,12 @@ var basket_service_1 = require("./services/basket.service");
 var AppComponent = (function () {
     function AppComponent(basketService) {
         this.basketService = basketService;
-        this.basketCount = 0;
-        this.totalPrice = 0;
+        this.basketCount = this.basketService.getBasketCount();
+        this.totalPrice = this.basketService.getTotalPrice();
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.basketService.onChangeBasketCount.subscribe(function (item) {
+        this.basketService.сhangeBasketCount.subscribe(function (item) {
             _this.basketCount = item.itemCount;
             _this.totalPrice = item.totalPrice;
         });
@@ -29,8 +29,7 @@ AppComponent = __decorate([
     core_1.Component({
         selector: 'app-store',
         templateUrl: 'app/app.component.html',
-        styleUrls: ['app/app.component.css'],
-        providers: [basket_service_1.BasketService]
+        styleUrls: ['app/app.component.css']
     }),
     __metadata("design:paramtypes", [basket_service_1.BasketService])
 ], AppComponent);

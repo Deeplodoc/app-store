@@ -18,6 +18,7 @@ var not_found_component_1 = require("./not-found/not-found.component");
 var item_component_1 = require("./item/item.component");
 var basket_component_1 = require("./basket/basket.component");
 var basket_service_1 = require("./services/basket.service");
+var session_service_1 = require("./services/session.service");
 var appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'items', component: items_component_1.ItemsComponent },
@@ -37,7 +38,7 @@ AppModule = __decorate([
         declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent,
             not_found_component_1.NotFoundComponent, item_component_1.ItemComponent, basket_component_1.BasketComponent
         ],
-        providers: [basket_service_1.BasketService],
+        providers: [basket_service_1.BasketService, session_service_1.SessionService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

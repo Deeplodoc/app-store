@@ -13,6 +13,7 @@ import { ItemComponent } from './item/item.component';
 import { BasketComponent } from './basket/basket.component';
 
 import { BasketService } from './services/basket.service';
+import { SessionService } from './services/session.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
     declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, 
         NotFoundComponent, ItemComponent, BasketComponent 
     ],
-    providers: [ BasketService ],
+    providers: [ BasketService, SessionService ],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

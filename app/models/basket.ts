@@ -1,8 +1,8 @@
 import { Item } from '../models/item';
 
 export class Basket{
-    private items: Item[] = [];
-    private totalPrice: number = 0;
+    items: Item[] = [];
+    totalPrice: number = 0;
 
     getItems(): Item[]{
         return this.items.sort((a, b): number => {

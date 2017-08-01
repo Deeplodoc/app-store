@@ -20,7 +20,7 @@ export class BasketComponent implements OnInit{
     ngOnInit(): void {
         this.items = this.basketServices.getItems();
         this.totalPrice = this.basketServices.getTotalPrice();
-        this.basketServices.onChangeBasketCount.subscribe((item: ChanchedBasket) => {
+        this.basketServices.сhangeBasketCount.subscribe((item: ChanchedBasket) => {
             this.totalPrice = item.totalPrice;
         });
     }
