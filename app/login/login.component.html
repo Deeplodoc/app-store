@@ -1,0 +1,16 @@
+<form #loginForm="ngForm" novalidate>
+    <div class="form-group">
+        <label>Логин</label>
+        <input class="form-control" name="login" [(ngModel)]="login" required pattern="/[a-zA-Z0-9А-Яа-я]/u" minlength="3" />
+        <div *ngIf="loginForm.controls['login'].hasError('required') && loginForm.controls['login'].touched" class="alert alert-danger">Введите логин.</div>
+        <div *ngIf="loginForm.controls['login'].hasError('minlength') && loginForm.controls['login'].touched" class="alert alert-danger">Минимальная длина 3 символа.</div>
+    </div>
+    <div class="form-group ">
+        <label>Пароль</label>
+        <input type="password " class="form-control " name="password " [(ngModel)]="password " required />
+        <div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="alert alert-danger">Введите пароль.</div>
+    </div>
+    <div class="form-group ">
+        <button [disabled]="loginForm.invalid " (click)="login(loginForm) "></button>
+    </div>
+</form>
