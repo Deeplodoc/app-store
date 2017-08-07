@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
         this.totalPrice = this.basketService.getTotalPrice();
     }
 
-    public openModal(template: TemplateRef<any>){
+    public openModal(template: TemplateRef<any>): void{
         this.modalRef = this.modalService.show(template);
     }
 

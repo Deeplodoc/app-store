@@ -9,14 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var user_service_1 = require("../services/user.service");
 var LoginComponent = (function () {
     function LoginComponent(userService) {
         this.userService = userService;
+        this.loginForm = new forms_1.FormGroup({
+            "login": new forms_1.FormControl("", [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3)
+            ]),
+            "password": new forms_1.FormControl("", forms_1.Validators.required)
+        });
     }
-    LoginComponent.prototype.login = function (loginForm) {
-        this.userService.login(loginForm.value.login, loginForm.value.password);
-    };
     return LoginComponent;
 }());
 LoginComponent = __decorate([

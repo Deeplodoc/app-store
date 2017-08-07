@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
+import { ReactiveFormsModule }   from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap';
@@ -12,6 +13,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ItemComponent } from './item/item.component';
 import { BasketComponent } from './basket/basket.component';
+import { LoginComponent } from './login/login.component';
 
 import { BasketService } from './services/basket.service';
 import { SessionService } from './services/session.service';
@@ -27,9 +29,9 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpModule, HttpModule, ModalModule.forRoot() ],
+    imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes), HttpModule, HttpModule, ModalModule.forRoot() ],
     declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, 
-        NotFoundComponent, ItemComponent, BasketComponent
+        NotFoundComponent, ItemComponent, BasketComponent, LoginComponent
     ],
     providers: [ BasketService, SessionService, UserService ],
     bootstrap:    [ AppComponent ]

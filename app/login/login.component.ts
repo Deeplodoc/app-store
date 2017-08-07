@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -8,9 +8,15 @@ import { UserService } from '../services/user.service';
 })
 
 export class LoginComponent{
-    constructor(private userService: UserService){}
+    public loginForm: FormGroup;
 
-    login(loginForm: NgForm): void{
-        this.userService.login(loginForm.value.login, loginForm.value.password);
+    constructor(private userService: UserService){
+        this.loginForm = new FormGroup({
+            "login": new FormControl("", [
+                Validators.required,
+                Validators.minLength(3)
+            ]),
+            "password": new FormControl("", Validators.required)
+        });
     }
 }
