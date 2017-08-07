@@ -10,12 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var basket_service_1 = require("./services/basket.service");
+var ngx_bootstrap_1 = require("ngx-bootstrap");
 var AppComponent = (function () {
-    function AppComponent(basketService) {
+    function AppComponent(basketService, modalService) {
         this.basketService = basketService;
+        this.modalService = modalService;
         this.basketCount = this.basketService.getBasketCount();
         this.totalPrice = this.basketService.getTotalPrice();
     }
+    AppComponent.prototype.openModal = function (template) {
+        this.modalRef = this.modalService.show(template);
+    };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.basketService.сhangeBasketCount.subscribe(function (item) {
@@ -31,7 +36,8 @@ AppComponent = __decorate([
         templateUrl: 'app/app.component.html',
         styleUrls: ['app/app.component.css']
     }),
-    __metadata("design:paramtypes", [basket_service_1.BasketService])
+    __metadata("design:paramtypes", [basket_service_1.BasketService,
+        ngx_bootstrap_1.BsModalService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

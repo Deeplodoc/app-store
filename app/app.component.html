@@ -1,6 +1,20 @@
 <div class="col-md-12">
     <a routerLink="/basket">Товаров в корзине: {{basketCount}} на сумму: {{totalPrice}}</a>
 </div>
+<div class="row">
+    <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+    <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Modal</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            This is a modal.
+        </div>
+    </ng-template>
+</div>
 <div class="col-md-12">
     <ul class="nav col-md-2">
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="col-md-12">

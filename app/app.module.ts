@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { AppComponent }   from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -26,9 +27,9 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpModule ],
+    imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpModule, HttpModule, ModalModule.forRoot() ],
     declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, 
-        NotFoundComponent, ItemComponent, BasketComponent 
+        NotFoundComponent, ItemComponent, BasketComponent
     ],
     providers: [ BasketService, SessionService, UserService ],
     bootstrap:    [ AppComponent ]
