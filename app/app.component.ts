@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     public openModal(template: TemplateRef<any>): void{
         this.modalRef = this.modalService.show(template);
     }
-
+    
     ngOnInit(): void {
         this.basketService.сhangeBasketCount.subscribe((item: ChanchedBasket) => {
             this.basketCount = item.itemCount;

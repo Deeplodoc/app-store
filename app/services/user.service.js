@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
+var http_3 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
@@ -30,14 +31,16 @@ var UserService = (function () {
     };
     UserService.prototype.register = function (item) {
         var data = JSON.stringify(item);
-        var headers = new http_2.Headers({ 'Content-Type': 'application/json;charset=utf-8' });
-        this.http.post('http://localhost:0000/account/register', data, { headers: headers })
+        var headers = new http_3.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_2.RequestOptions({ headers: headers });
+        this.http.post('http://localhost:53791/account/register', data, options)
             .map(function (response) {
             console.log(response);
         })
             .catch(function (error) {
+            console.log(error);
             return Observable_1.Observable.throw(error);
-        });
+        }).subscribe();
     };
     UserService.prototype.forgotPassword = function (code) {
         return this.http.get('http://localhost:0000/account/getUserByForgotCode?code=' + code)
@@ -68,7 +71,7 @@ var UserService = (function () {
     };
     UserService.prototype.editUser = function (item) {
         var data = JSON.stringify(item);
-        var headers = new http_2.Headers({ 'Content-Type': 'application/json;charset=utf-8' });
+        var headers = new http_3.Headers({ 'Content-Type': 'application/json;charset=utf-8' });
         this.http.post('http://localhost:0000/account/editUser', data, { headers: headers })
             .map(function (response) {
             console.log(response);

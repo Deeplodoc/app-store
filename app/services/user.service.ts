@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { RequestOptions } from '@angular/http';
 import { Response, Headers } from '@angular/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs/Observable';
@@ -23,14 +24,16 @@ export class UserService{
 
     register(item: User): void{
         let data: string = JSON.stringify(item);
-        let headers=new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
-        this.http.post('http://localhost:0000/account/register', data, {headers: headers})
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        this.http.post('http://localhost:53791/account/register', data, options)
         .map((response: Response) => {
             console.log(response);
         })
         .catch((error: any) => {
+            console.log(error);
             return Observable.throw(error);
-        });
+        }).subscribe();
     }
 
     forgotPassword(code: string): Observable<User>{

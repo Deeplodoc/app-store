@@ -1,36 +1,41 @@
-<form #registerForm="ngForm" novalidate>
+<form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
     <div class="form-group">
         <label>Фамилия</label>
-        <input class="form-control" name="firstName" [(ngModel)]="user.firstName" />
+        <input class="form-control" name="firstName" formControlName="firstName" />
     </div>
     <div class="form-group">
         <label>Имя</label>
-        <input class="form-control" name="lastName" [(ngModel)]="user.lastName" />
+        <input class="form-control" name="lastName" formControlName="lastName" />
     </div>
     <div class="form-group">
         <label>Адрес</label>
-        <input class="form-control" name="address" [(ngModel)]="user.address" />
+        <input class="form-control" name="address" formControlName="address" />
     </div>
     <div class="form-group">
         <label>День рождения</label>
-        <input class="form-control" name="bDay" [(ngModel)]="user.bDay" />
+        <input class="form-control" name="bDay" formControlName="bDay" />
+    </div>
+    <div class="form-group">
+        <label>Телефон</label>
+        <input class="form-control" name="phone" formControlName="phone" />
     </div>
     <div class="form-group">
         <label>Логин</label>
-        <input class="form-control" name="login" [(ngModel)]="user.login" required pattern="/[a-zA-Z0-9А-Яа-я]/u" minlength="3" />
+        <input class="form-control" name="login" formControlName="login" />
         <div *ngIf="registerForm.controls['login'].hasError('required') && registerForm.controls['login'].touched" class="alert alert-danger">Введите логин.</div>
         <div *ngIf="registerForm.controls['login'].hasError('minlength') && registerForm.controls['login'].touched" class="alert alert-danger">Минимальная длина 3 символа.</div>
     </div>
     <div class="form-group">
-        <label>Enail</label>
-        <input class="form-control" name="email" [(ngModel)]="user.email" required email />
+        <label>Email</label>
+        <input class="form-control" name="email" formControlName="email" />
+        <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="alert alert-danger">Некоректный email.</div>
     </div>
     <div class="form-group ">
         <label>Пароль</label>
-        <input type="password " class="form-control " name="password " [(ngModel)]="user.password " required />
+        <input type="password" class="form-control" name="password" formControlName="password" />
         <div *ngIf="registerForm.controls['password'].hasError('required') && registerForm.controls['password'].touched" class="alert alert-danger">Введите пароль.</div>
     </div>
     <div class="form-group ">
-        <button [disabled]="registerForm.invalid " (click)="register() "></button>
+        <button class="btn btn-success" [disabled]="registerForm.invalid">Ok</button>
     </div>
 </form>

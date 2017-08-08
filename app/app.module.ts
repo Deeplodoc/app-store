@@ -14,6 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ItemComponent } from './item/item.component';
 import { BasketComponent } from './basket/basket.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 import { BasketService } from './services/basket.service';
 import { SessionService } from './services/session.service';
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
 @NgModule({
     imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes), HttpModule, HttpModule, ModalModule.forRoot() ],
     declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, 
-        NotFoundComponent, ItemComponent, BasketComponent, LoginComponent
+        NotFoundComponent, ItemComponent, BasketComponent, LoginComponent, RegisterComponent
     ],
     providers: [ BasketService, SessionService, UserService ],
     bootstrap:    [ AppComponent ]

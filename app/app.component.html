@@ -1,9 +1,10 @@
 <div class="col-md-12">
     <a routerLink="/basket">Товаров в корзине: {{basketCount}} на сумму: {{totalPrice}}</a>
-    <a type="button" (click)="openModal(template)">Вход</a>
+    <a type="button" (click)="openModal(loginTemplate)">Вход</a>
+    <a type="button" (click)="openModal(registrationTemplate)">Регистрация</a>
 </div>
 <div class="row">
-    <ng-template #template>
+    <ng-template #loginTemplate>
         <div class="modal-header">
             <h4 class="modal-title pull-left">Вход</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -12,6 +13,19 @@
         </div>
         <div class="modal-body">
             <login-app></login-app>
+        </div>
+    </ng-template>
+</div>
+<div class="row">
+    <ng-template #registrationTemplate>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Регистрация</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <register-app></register-app>
         </div>
     </ng-template>
 </div>
