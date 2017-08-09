@@ -21,6 +21,7 @@ var item_component_1 = require("./item/item.component");
 var basket_component_1 = require("./basket/basket.component");
 var login_component_1 = require("./login/login.component");
 var register_component_1 = require("./register/register.component");
+var confirm_component_1 = require("./confirm/confirm.component");
 var basket_service_1 = require("./services/basket.service");
 var session_service_1 = require("./services/session.service");
 var user_service_1 = require("./services/user.service");
@@ -30,6 +31,7 @@ var appRoutes = [
     { path: 'items/:id', component: item_component_1.ItemComponent },
     { path: 'contacts', component: contacts_component_1.ContactsComponent },
     { path: 'basket', component: basket_component_1.BasketComponent },
+    { path: 'confirm', component: confirm_component_1.ConfirmComponent },
     { path: '**', component: not_found_component_1.NotFoundComponent }
 ];
 var AppModule = (function () {
@@ -41,7 +43,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_2.ReactiveFormsModule, router_1.RouterModule.forRoot(appRoutes), http_1.HttpModule, http_1.HttpModule, ngx_bootstrap_1.ModalModule.forRoot()],
         declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent,
-            not_found_component_1.NotFoundComponent, item_component_1.ItemComponent, basket_component_1.BasketComponent, login_component_1.LoginComponent, register_component_1.RegisterComponent
+            not_found_component_1.NotFoundComponent, item_component_1.ItemComponent, basket_component_1.BasketComponent, login_component_1.LoginComponent, register_component_1.RegisterComponent, confirm_component_1.ConfirmComponent
         ],
         providers: [basket_service_1.BasketService, session_service_1.SessionService, user_service_1.UserService],
         bootstrap: [app_component_1.AppComponent]

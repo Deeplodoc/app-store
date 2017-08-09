@@ -1,3 +1,4 @@
 export enum SessionName{
-    Basket = "basket"
+    Basket = "basket",
+    Authorize = "auth"
 }

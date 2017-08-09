@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { RequestOptions } from '@angular/http';
 import { Response, Headers } from '@angular/http';
 import { User } from '../models/user';
+import { LoginModel } from '../models/login.model';
+import { LoginResponseModel } from '../models/login.response.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -12,20 +14,21 @@ import 'rxjs/add/observable/throw';
 export class UserService{
     constructor(private http: Http){}
 
-    login(login: string, password: string): void{
-        this.http.get('http://localhost:0000/account/login?login=' + login + '&password=' + password)
+    login(item: LoginModel): Observable<LoginResponseModel>{
+        let data: string = JSON.stringify(item);
+        let options = this.getOptionsForPost();
+        return this.http.post('http://localhost:53791/account/login', data, options)
         .map((response: Response) => {
-            console.log(response);
+            return response.json();
         })
-        .catch((error: any)=> {
+        .catch((error: any) => {
             return Observable.throw(error)
         });
     }
 
     register(item: User): void{
         let data: string = JSON.stringify(item);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+        let options = this.getOptionsForPost();
         this.http.post('http://localhost:53791/account/register', data, options)
         .map((response: Response) => {
             console.log(response);
@@ -47,7 +50,7 @@ export class UserService{
     }
 
     confirm(userId: string, code: string): void{
-        this.http.get('http://localhost:0000/account/confirm?userId=' + userId + '&code=' + code)
+        this.http.get('http://localhost:53791/account/confirm?userId=' + userId + '&code=' + code)
         .map((response: Response) => {
             console.log(response);
         })
@@ -68,7 +71,7 @@ export class UserService{
 
     editUser(item: User): void{
         let data: string = JSON.stringify(item);
-        let headers=new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
+        let headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
         this.http.post('http://localhost:0000/account/editUser', data, {headers: headers})
         .map((response: Response) => {
             console.log(response);
@@ -76,5 +79,10 @@ export class UserService{
         .catch((error: any) => {
             return Observable.throw(error);
         });
+    }
+
+    private getOptionsForPost(): RequestOptions{
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        return new RequestOptions({ headers: headers });
     }
 }

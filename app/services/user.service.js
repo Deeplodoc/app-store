@@ -20,10 +20,12 @@ var UserService = (function () {
     function UserService(http) {
         this.http = http;
     }
-    UserService.prototype.login = function (login, password) {
-        this.http.get('http://localhost:0000/account/login?login=' + login + '&password=' + password)
+    UserService.prototype.login = function (item) {
+        var data = JSON.stringify(item);
+        var options = this.getOptionsForPost();
+        return this.http.post('http://localhost:53791/account/login', data, options)
             .map(function (response) {
-            console.log(response);
+            return response.json();
         })
             .catch(function (error) {
             return Observable_1.Observable.throw(error);
@@ -31,8 +33,7 @@ var UserService = (function () {
     };
     UserService.prototype.register = function (item) {
         var data = JSON.stringify(item);
-        var headers = new http_3.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_2.RequestOptions({ headers: headers });
+        var options = this.getOptionsForPost();
         this.http.post('http://localhost:53791/account/register', data, options)
             .map(function (response) {
             console.log(response);
@@ -52,7 +53,7 @@ var UserService = (function () {
         });
     };
     UserService.prototype.confirm = function (userId, code) {
-        this.http.get('http://localhost:0000/account/confirm?userId=' + userId + '&code=' + code)
+        this.http.get('http://localhost:53791/account/confirm?userId=' + userId + '&code=' + code)
             .map(function (response) {
             console.log(response);
         })
@@ -79,6 +80,10 @@ var UserService = (function () {
             .catch(function (error) {
             return Observable_1.Observable.throw(error);
         });
+    };
+    UserService.prototype.getOptionsForPost = function () {
+        var headers = new http_3.Headers({ 'Content-Type': 'application/json' });
+        return new http_2.RequestOptions({ headers: headers });
     };
     return UserService;
 }());

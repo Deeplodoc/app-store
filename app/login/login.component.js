@@ -11,9 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var user_service_1 = require("../services/user.service");
+var session_name_1 = require("../enums/session.name");
+var session_service_1 = require("../services/session.service");
 var LoginComponent = (function () {
-    function LoginComponent(userService) {
+    function LoginComponent(userService, sessionService) {
         this.userService = userService;
+        this.sessionService = sessionService;
         this.loginForm = new forms_1.FormGroup({
             "login": new forms_1.FormControl("", [
                 forms_1.Validators.required,
@@ -22,6 +25,17 @@ var LoginComponent = (function () {
             "password": new forms_1.FormControl("", forms_1.Validators.required)
         });
     }
+    LoginComponent.prototype.submit = function () {
+        var _this = this;
+        this.userService.login(this.loginForm.value)
+            .subscribe(function (data) {
+            _this.loginResponse = data;
+            _this.sessionService.set(session_name_1.SessionName.Authorize, _this.loginResponse);
+        }, function (error) {
+            _this.error = error;
+            console.log(_this.error);
+        });
+    };
     return LoginComponent;
 }());
 LoginComponent = __decorate([
@@ -29,7 +43,8 @@ LoginComponent = __decorate([
         selector: 'login-app',
         templateUrl: 'app/login/login.component.html'
     }),
-    __metadata("design:paramtypes", [user_service_1.UserService])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        session_service_1.SessionService])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map
