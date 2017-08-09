@@ -1,1 +1,17 @@
 <h2>Hello Angular 2 Stote</h2>
+<div class="row">
+    <ng-template #confirmTemplate>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Подтверждение почты</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <span>Не удалось подтвердить почту, либо почта уже подтверждена.</span>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" (click)="closeModal()">Ок</button>
+        </div>
+    </ng-template>
+</div>

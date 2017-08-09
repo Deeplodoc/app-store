@@ -15,6 +15,7 @@ import { ItemComponent } from './item/item.component';
 import { BasketComponent } from './basket/basket.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserProfileComponent } from './user.profile/user.profile.component';
 
 import { BasketService } from './services/basket.service';
 import { SessionService } from './services/session.service';
@@ -26,13 +27,14 @@ const appRoutes: Routes = [
     { path: 'items/:id', component: ItemComponent },
     { path: 'contacts', component: ContactsComponent },
     { path: 'basket', component: BasketComponent },
+    { path: 'profile/:userId', component: UserProfileComponent },
     { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes), HttpModule, HttpModule, ModalModule.forRoot() ],
     declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, 
-        NotFoundComponent, ItemComponent, BasketComponent, LoginComponent, RegisterComponent
+        NotFoundComponent, ItemComponent, BasketComponent, LoginComponent, RegisterComponent, UserProfileComponent
     ],
     providers: [ BasketService, SessionService, UserService ],
     bootstrap:    [ AppComponent ]

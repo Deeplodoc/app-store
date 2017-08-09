@@ -5,6 +5,8 @@ import { Response, Headers } from '@angular/http';
 import { User } from '../models/user';
 import { LoginModel } from '../models/login.model';
 import { LoginResponseModel } from '../models/login.response.model';
+import { SessionName } from '../enums/session.name';
+import { SessionService } from '../services/session.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -12,7 +14,8 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService{
-    constructor(private http: Http){}
+    constructor(private http: Http,
+    private sessionService: SessionService){}
 
     login(item: LoginModel): Observable<LoginResponseModel>{
         let data: string = JSON.stringify(item);
@@ -49,10 +52,11 @@ export class UserService{
         });
     }
 
-    confirm(userId: string, code: string): void{
-        this.http.get('http://localhost:53791/account/confirm?userId=' + userId + '&code=' + code)
+    confirm(userId: string, code: string): Observable<LoginResponseModel>{
+        return this.http.get('http://localhost:53791/account/confirm?userId=' + userId + '&code=' + code)
         .map((response: Response) => {
             console.log(response);
+            return response.json();
         })
         .catch((error: any)=> {
             return Observable.throw(error)
@@ -79,6 +83,24 @@ export class UserService{
         .catch((error: any) => {
             return Observable.throw(error);
         });
+    }
+
+    getUserById(userId: string): Observable<User>{
+        let loginModel: LoginResponseModel = this.sessionService.get(SessionName.Authorize);
+        if(loginModel != null && loginModel != undefined){
+            let headers = new Headers({ 'Authorization': 'Bearer ' + loginModel.access_token });
+            let options = new RequestOptions({ headers: headers });
+
+            return this.http.get('http://localhost:53791/account/getUserById?userId=' + userId, options)
+            .map((response: Response) => {
+                return response.json();
+            })
+            .catch((error: any) => {
+                return Observable.throw(error);
+            });
+        }
+
+        return null;
     }
 
     private getOptionsForPost(): RequestOptions{

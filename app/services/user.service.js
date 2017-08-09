@@ -12,13 +12,16 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
 var http_3 = require("@angular/http");
+var session_name_1 = require("../enums/session.name");
+var session_service_1 = require("../services/session.service");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
 var UserService = (function () {
-    function UserService(http) {
+    function UserService(http, sessionService) {
         this.http = http;
+        this.sessionService = sessionService;
     }
     UserService.prototype.login = function (item) {
         var data = JSON.stringify(item);
@@ -53,9 +56,10 @@ var UserService = (function () {
         });
     };
     UserService.prototype.confirm = function (userId, code) {
-        this.http.get('http://localhost:53791/account/confirm?userId=' + userId + '&code=' + code)
+        return this.http.get('http://localhost:53791/account/confirm?userId=' + userId + '&code=' + code)
             .map(function (response) {
             console.log(response);
+            return response.json();
         })
             .catch(function (error) {
             return Observable_1.Observable.throw(error);
@@ -81,6 +85,21 @@ var UserService = (function () {
             return Observable_1.Observable.throw(error);
         });
     };
+    UserService.prototype.getUserById = function (userId) {
+        var loginModel = this.sessionService.get(session_name_1.SessionName.Authorize);
+        if (loginModel != null && loginModel != undefined) {
+            var headers = new http_3.Headers({ 'Authorization': 'Bearer ' + loginModel.access_token });
+            var options = new http_2.RequestOptions({ headers: headers });
+            return this.http.get('http://localhost:53791/account/getUserById?userId=' + userId, options)
+                .map(function (response) {
+                return response.json();
+            })
+                .catch(function (error) {
+                return Observable_1.Observable.throw(error);
+            });
+        }
+        return null;
+    };
     UserService.prototype.getOptionsForPost = function () {
         var headers = new http_3.Headers({ 'Content-Type': 'application/json' });
         return new http_2.RequestOptions({ headers: headers });
@@ -89,7 +108,8 @@ var UserService = (function () {
 }());
 UserService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http,
+        session_service_1.SessionService])
 ], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map
