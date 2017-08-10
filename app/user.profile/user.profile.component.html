@@ -1,9 +1,28 @@
-<div class="col-md-12">
+<div class="row">
+    <ng-template #resetPasswordTemplate>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Сброс пароля</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <reset-password></reset-password>
+        </div>
+    </ng-template>
+</div>
+<div *ngIf="user" class="col-md-12">
+    <div *ngIf="isSuccessSendConfirm" class="alert alert-success">На вашу почту выслано письмо для подтверждения.</div>
+    <div *ngIf="errorSendConfirm" class="alert alert-danger">Не удалось выслать письмо подтверждения на вашу почту.</div>
     <p>Фамилия: <strong>{{user.firstName}}</strong></p>
     <p>Имя: <strong>{{user.lastName}}</strong></p>
     <p>Адрес: <strong>{{user.address}}</strong></p>
     <p>Телефон: <strong>{{user.phone}}</strong></p>
     <p>Дата рождения: <strong>{{user.bDay}}</strong></p>
-    <p>Email: <strong>{{user.email}}</strong>{{!user.IsConfirm? <a>Подтвердить</a>: ""}}</p>
+    <p>Email:
+        <strong>{{user.email}}</strong>
+        <a *ngIf="isConfirm != null && isConfirm != undefined && !isConfirm" (click)="confirmEmail()">Подтвердить</a>
+    </p>
     <p>Логин: <strong>{{user.login}}</strong></p>
+    <a (click)="openModal(resetPasswordTemplate)">Сброс пароля</a>
 </div>

@@ -37,10 +37,6 @@ export class HomeComponent implements OnDestroy, OnInit{
         this.modalRef = this.modalService.show(this.confirmTemplate);
     }
 
-    public closeModal(): void{
-        this.modalService.hide(this.modalService.getModalsCount());
-    }
-
     ngOnInit(): void {
         if(this.userId != null && this.userId != undefined &&
         this.code != null && this.code != undefined){

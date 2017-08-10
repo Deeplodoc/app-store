@@ -11,27 +11,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var user_service_1 = require("../services/user.service");
-var user_1 = require("../models/user");
+var ngx_bootstrap_1 = require("ngx-bootstrap");
 var UserProfileComponent = (function () {
-    function UserProfileComponent(userService, activateRoute) {
+    function UserProfileComponent(userService, activateRoute, modalService) {
         var _this = this;
         this.userService = userService;
         this.activateRoute = activateRoute;
+        this.modalService = modalService;
         this.paramsSubscription = activateRoute.params
             .subscribe(function (params) { return _this.userId = params['userId']; });
-        this.user = new user_1.User();
     }
+    UserProfileComponent.prototype.confirmEmail = function () {
+        var _this = this;
+        this.userService.sendMailConfirm(String(this.user.id))
+            .subscribe(function (data) {
+            _this.isSuccessSendConfirm = true;
+        }, function (error) {
+            _this.errorSendConfirm = error;
+            console.log(_this.error);
+        });
+    };
+    UserProfileComponent.prototype.openModal = function (template) {
+        this.modalRef = this.modalService.show(template);
+    };
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log(this.user);
         if (this.userId != null && this.userId != undefined) {
             this.userService.getUserById(this.userId)
                 .subscribe(function (data) {
                 _this.user = data;
-                console.log(data);
+                _this.isConfirm = _this.user.isConfirm;
             }, function (error) {
                 _this.error = error;
-                console.log(_this.error);
             });
         }
     };
@@ -46,7 +57,8 @@ UserProfileComponent = __decorate([
         templateUrl: 'app/user.profile/user.profile.component.html'
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
-        router_1.ActivatedRoute])
+        router_1.ActivatedRoute,
+        ngx_bootstrap_1.BsModalService])
 ], UserProfileComponent);
 exports.UserProfileComponent = UserProfileComponent;
 //# sourceMappingURL=user.profile.component.js.map

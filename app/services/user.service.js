@@ -22,13 +22,17 @@ var UserService = (function () {
     function UserService(http, sessionService) {
         this.http = http;
         this.sessionService = sessionService;
+        this.loginUser = new core_1.EventEmitter();
     }
     UserService.prototype.login = function (item) {
+        var _this = this;
         var data = JSON.stringify(item);
         var options = this.getOptionsForPost();
         return this.http.post('http://localhost:53791/account/login', data, options)
             .map(function (response) {
-            return response.json();
+            var loginResponse = response.json();
+            _this.loginUser.emit(loginResponse);
+            return loginResponse;
         })
             .catch(function (error) {
             return Observable_1.Observable.throw(error);
@@ -46,10 +50,10 @@ var UserService = (function () {
             return Observable_1.Observable.throw(error);
         }).subscribe();
     };
-    UserService.prototype.forgotPassword = function (code) {
-        return this.http.get('http://localhost:0000/account/getUserByForgotCode?code=' + code)
+    UserService.prototype.forgotPassword = function (email) {
+        return this.http.get('http://localhost:53791/account/forgotPassword?email=' + email)
             .map(function (response) {
-            return response.json();
+            return true;
         })
             .catch(function (error) {
             return Observable_1.Observable.throw(error);
@@ -65,10 +69,19 @@ var UserService = (function () {
             return Observable_1.Observable.throw(error);
         });
     };
-    UserService.prototype.resetPassword = function (email, newPassword) {
-        this.http.get('http://localhost:0000/account/resetPassword?email=' + email + '&newPassword=' + newPassword)
+    UserService.prototype.sendMailConfirm = function (userId) {
+        return this.http.get('http://localhost:53791/account/sendConfirm?userId=' + userId)
             .map(function (response) {
-            console.log(response);
+            return true;
+        })
+            .catch(function (error) {
+            return Observable_1.Observable.throw(error);
+        });
+    };
+    UserService.prototype.resetPassword = function (email, code, newPassword) {
+        return this.http.get('http://localhost:53791/account/resetPassword?email=' + email + '&code=' + code + '&newPassword=' + newPassword)
+            .map(function (response) {
+            return true;
         })
             .catch(function (error) {
             return Observable_1.Observable.throw(error);
@@ -106,6 +119,10 @@ var UserService = (function () {
     };
     return UserService;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], UserService.prototype, "loginUser", void 0);
 UserService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http,

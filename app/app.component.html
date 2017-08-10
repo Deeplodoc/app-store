@@ -1,7 +1,9 @@
 <div class="col-md-12">
     <a routerLink="/basket">Товаров в корзине: {{basketCount}} на сумму: {{totalPrice}}</a>
-    <a type="button" (click)="openModal(loginTemplate)">Вход</a>
+    <a *ngIf="!userId" type="button" (click)="openModal(loginTemplate)">Вход</a>
     <a type="button" (click)="openModal(registrationTemplate)">Регистрация</a>
+    <a *ngIf="userId" [routerLink]="['profile', userId]" type="button">Профиль</a>
+    <a *ngIf="userId" type="button" (click)="exit()">Выход</a>
 </div>
 <div class="row">
     <ng-template #loginTemplate>
@@ -26,6 +28,19 @@
         </div>
         <div class="modal-body">
             <register-app></register-app>
+        </div>
+    </ng-template>
+</div>
+<div class="row">
+    <ng-template #resetPasswordTemplate>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Сброс пароля</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <reset-password></reset-password>
         </div>
     </ng-template>
 </div>

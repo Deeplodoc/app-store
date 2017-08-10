@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import { RequestOptions } from '@angular/http';
 import { Response, Headers } from '@angular/http';
@@ -14,6 +14,8 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService{
+    @Output() loginUser = new EventEmitter<LoginResponseModel>();
+
     constructor(private http: Http,
     private sessionService: SessionService){}
 
@@ -22,7 +24,9 @@ export class UserService{
         let options = this.getOptionsForPost();
         return this.http.post('http://localhost:53791/account/login', data, options)
         .map((response: Response) => {
-            return response.json();
+             let loginResponse: LoginResponseModel = response.json();
+            this.loginUser.emit(loginResponse);
+            return loginResponse;
         })
         .catch((error: any) => {
             return Observable.throw(error)
@@ -42,10 +46,10 @@ export class UserService{
         }).subscribe();
     }
 
-    forgotPassword(code: string): Observable<User>{
-        return this.http.get('http://localhost:0000/account/getUserByForgotCode?code=' + code)
+    forgotPassword(email: string): Observable<boolean>{
+        return this.http.get('http://localhost:53791/account/forgotPassword?email=' + email)
         .map((response: Response) => {
-            return response.json();
+            return true;
         })
         .catch((error: any)=> {
             return Observable.throw(error)
@@ -63,13 +67,23 @@ export class UserService{
         });
     }
 
-    resetPassword(email: string, newPassword: string): void{
-        this.http.get('http://localhost:0000/account/resetPassword?email=' + email + '&newPassword=' + newPassword)
+    sendMailConfirm(userId: string): Observable<boolean>{
+        return this.http.get('http://localhost:53791/account/sendConfirm?userId=' + userId)
         .map((response: Response) => {
-            console.log(response);
+            return true;
         })
         .catch((error: any)=> {
             return Observable.throw(error)
+        });
+    }
+
+    resetPassword(email: string, code: string, newPassword: string): Observable<boolean>{
+        return this.http.get('http://localhost:53791/account/resetPassword?email=' + email + '&code=' + code + '&newPassword=' + newPassword)
+        .map((response: Response) => {
+            return true;
+        })
+        .catch((error: any)=> {
+            return Observable.throw(error);
         });
     }
 

@@ -32,9 +32,6 @@ var HomeComponent = (function () {
     HomeComponent.prototype.openModal = function () {
         this.modalRef = this.modalService.show(this.confirmTemplate);
     };
-    HomeComponent.prototype.closeModal = function () {
-        this.modalService.hide(this.modalService.getModalsCount());
-    };
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         if (this.userId != null && this.userId != undefined &&
