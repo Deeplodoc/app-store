@@ -5,6 +5,8 @@ import { ReactiveFormsModule }   from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap';
+import { CalendarModule } from 'primeng/primeng';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent }   from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes), HttpModule, HttpModule, ModalModule.forRoot() ],
+    imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes), HttpModule, 
+        HttpModule, ModalModule.forRoot(), CalendarModule, BrowserAnimationsModule ],
     declarations: [ AppComponent, HomeComponent, ItemsComponent, ContactsComponent, 
         NotFoundComponent, ItemComponent, BasketComponent, LoginComponent, RegisterComponent, UserProfileComponent,
         ForgotPasswordComponent, ResetPassword

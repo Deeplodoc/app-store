@@ -27,8 +27,8 @@ var RegisterComponent = (function () {
             "firstName": new forms_1.FormControl(""),
             "lastName": new forms_1.FormControl(""),
             "address": new forms_1.FormControl(""),
-            "bDay": new forms_1.FormControl(""),
-            "phone": new forms_1.FormControl("")
+            "phone": new forms_1.FormControl(""),
+            "bDay": new forms_1.FormControl("")
         });
     }
     RegisterComponent.prototype.submit = function () {
@@ -40,12 +40,22 @@ var RegisterComponent = (function () {
         console.log(this.user);
         this.userService.register(this.registerForm.value);
     };
+    RegisterComponent.prototype.ngOnInit = function () {
+        this.dateLocale = {
+            firstDayOfWeek: 0,
+            dayNames: ["понедельник", "вторник", "среда", "четверг", "пятница", "субботу", "воскресенье"],
+            dayNamesShort: ["пн", "вт", "ср", "чт", "пт", "сб", "вс"],
+            dayNamesMin: ["пн", "вт", "ср", "чт", "пт", "сб", "вс"],
+            monthNames: ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"],
+            monthNamesShort: ["янв", "фев", "мар", "апр", "май", "июл", "июн", "авг", "сен", "окт", "ноя", "дек"]
+        };
+    };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
     core_1.Component({
         selector: 'register-app',
-        templateUrl: 'app/register/register.component.html'
+        templateUrl: 'app/register/register.component.html',
     }),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], RegisterComponent);

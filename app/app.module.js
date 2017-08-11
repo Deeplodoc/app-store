@@ -12,6 +12,8 @@ var forms_2 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var http_1 = require("@angular/http");
 var ngx_bootstrap_1 = require("ngx-bootstrap");
+var primeng_1 = require("primeng/primeng");
+var animations_1 = require("@angular/platform-browser/animations");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var items_component_1 = require("./items/items.component");
@@ -44,7 +46,8 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_2.ReactiveFormsModule, router_1.RouterModule.forRoot(appRoutes), http_1.HttpModule, http_1.HttpModule, ngx_bootstrap_1.ModalModule.forRoot()],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_2.ReactiveFormsModule, router_1.RouterModule.forRoot(appRoutes), http_1.HttpModule,
+            http_1.HttpModule, ngx_bootstrap_1.ModalModule.forRoot(), primeng_1.CalendarModule, animations_1.BrowserAnimationsModule],
         declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, items_component_1.ItemsComponent, contacts_component_1.ContactsComponent,
             not_found_component_1.NotFoundComponent, item_component_1.ItemComponent, basket_component_1.BasketComponent, login_component_1.LoginComponent, register_component_1.RegisterComponent, user_profile_component_1.UserProfileComponent,
             forgot_password_component_1.ForgotPasswordComponent, reset_password_component_1.ResetPassword
