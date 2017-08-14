@@ -5,8 +5,7 @@ import { ChanchedBasket } from '../models/eventModels/chanched.basket';
 
 @Component({
     selector: 'basket-app',
-    templateUrl: 'app/basket/basket.component.html',
-    styleUrls: [ 'app/basket/basket.component.css' ]
+    templateUrl: 'app/basket/basket.component.html'
 })
 export class BasketComponent implements OnInit{
     private items: Item[];

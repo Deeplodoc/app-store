@@ -1,16 +1,220 @@
-<h2></h2>
-<div class="col-md-12">
-    <div class="col-md-12">
-        <span class="pull-right">Сумма заказа: {{totalPrice}}</span>
-    </div>
-    <div class="col-md-3 basketContainer" *ngFor="let item of items">
-        <img class="col-md-2" src="{{item.picture}}" />
-        <div class="col-md-10">
-            <h4>{{item.name}}</h4>
-            <span>{{item.price | currency:'USD':true}}</span>
+<div class="row_12">
+    <div class="container_12">
+        <div class="grid_12">
+            <div class="breadcrumb">&nbsp;&nbsp;<a href="http://livedemo00.template-help.com" class="headerNavigation">Top</a> <i class="icon-double-angle-right"></i> <a href="http://livedemo00.template-help.com/osc_51200/index.php?osCsid=893fvc9rc5g7b8liv5llvkhle4" class="headerNavigation">Catalog</a>                <i class="icon-double-angle-right"></i> <a href="http://livedemo00.template-help.com/osc_51200/shopping_cart.php?osCsid=893fvc9rc5g7b8liv5llvkhle4" class="headerNavigation last">Cart Contents</a>
+            </div>
         </div>
-        <div class="col-md-12">
-            <button class="btn btn-danger pull-right" (click)="removeItem(item.id)">Удалить</button>
+    </div>
+    <div class="container_12">
+        <div id="bodyContent" class="grid_9 push_3 ">
+            <div class="box_wrapper_title22">
+                <div class="box_wrapper_title"><span class="title-icon"></span>
+                    <h1>What's In My Cart?</h1>
+                </div>
+            </div>
+            <form name="cart_quantity" action="" method="post">
+                <div class="contentContainer page_cart first last">
+                    <!-- <h2></h2>-->
+                    <div class="contentPadd">
+                        <table id="shop-cart" class="prods_content cart" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <th>Product(s)</th>
+                                    <th>Product(s)</th>
+                                    <th>Qty.</th>
+                                    <th class="th3">Total</th>
+                                    <th class="th1"></th>
+                                </tr>
+                                <tr class="row" *ngFor="let item of items">
+                                    <td class="cart_prod_img">
+                                        <div class="pic_padd wrapper_pic_div" style="width:230px;height:206px;">
+                                            <a class="prods_pic_bg" href="images/products/044.png" style="width:230px;height:206px;"><img src="images/products/044.png" alt="ipsum dolor sit amet" title="ipsum dolor sit amet" style="width:230px;height:206px;margin:0px 0px 0px 0px;" width="230" height="206"></a>
+                                        </div>
+                                    </td>
+                                    <td class="cart_prods" align="center">
+                                        <table class="hover" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="name name_padd equal-height" style="min-height: 19px;">
+                                                            <div><span><a href="">{{item.name}}</a></span></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="cart_products_options"><i> - Color:&nbsp;&nbsp;original</i><br><i> - Size:&nbsp;&nbsp;standard</i><br></div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td class="cart_update"><input name="cart_quantity[]" value="1" size="6" type="text"><br><br>
+                                        <div class="buttonSet">
+                                            <input name="products_id[]" value="16{1}2{2}3" type="hidden">
+                                            <strong class="button_cart">
+                                                <button id="tdb1" type="button">Update</button>
+                                            </strong>
+                                        </div>
+                                    </td>
+                                    <td class="cart_price"><span class="productSpecialPrice">{{item.price | currency:'USD':true}}</span></td>
+                                    <td class="cart_row_delete">
+                                        <strong class="button_cart">
+                                            <a id="tdb1" class="ui-state-default ui-corner-all ui-button-text-icon-primary ui-priority-secondary" (click)="removeItem(item.id)">
+                                                <span class="ui-button-icon-primary ui-icon ui-icon-trash"></span>
+                                                <span class="ui-button-text">Remove</span>
+                                            </a>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--  <div class="prods_hseparator"></div> -->
+                        <table class="tot_cart cart" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr class="cart_total">
+                                    <td>Sub-Total:</td>
+                                    <td class="productSpecialPrice">{{totalPrice}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="cl_both ofh cart_total buttonSet">
+                            <div class="fl_left"><strong class="button_cart"><a id="tdb1" routerLink="">Continue</a></strong></div>
+                            <div class="fl_left"><strong class="button_details"><a id="tdb1">Checkout</a></strong></div>
+                            <p class="fl_left or"><span class="ui-button-text">&nbsp;&nbsp;&nbsp;&nbsp;- OR -</span></p>
+                            <p class="fl_left">
+                                <a href=""><img src="images/btn_xpressCheckout.gif" alt="" title="Checkout with PayPal" border="0"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- bodyContent //-->
+
+        <div id="columnLeft" class="grid_3 pull_9">
+            <div>
+                <div class="infoBoxWrapper list border_none first">
+                    <div class="box_wrapper">
+                        <div class="infoBoxHeading">
+                            <div class="box_wrapper_title22">
+                                <div class="box_wrapper_title">
+                                    <h1><span class="title-icon"></span><i class="icon-reorder"></i>Categories</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="infoBoxContents">
+                            <ul class="categories">
+                                <li class="first">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">VEGETABLES</div>
+</a></div>
+                                </li>
+                                <li class="">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">SEAFOOD<span class="category_arrow "></span></div>
+</a></div>
+                                </li>
+                                <li class="">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">MEAT</div>
+</a></div>
+                                </li>
+                                <li class="">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">ENTREES</div>
+</a></div>
+                                </li>
+                                <li class="">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">APPETIZERS</div>
+</a></div>
+                                </li>
+                                <li class="">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">PIZZA</div>
+</a></div>
+                                </li>
+                                <li class="">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">DESSERTS</div>
+</a></div>
+                                </li>
+                                <li class="last">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">Etetur ipisicing</div>
+</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="infoBoxWrapper box2">
+                    <div class="box_wrapper">
+                        <div class="infoBoxHeading">
+                            <a href="">
+                                <div class="box_wrapper_title22">
+                                    <div class="box_wrapper_title">
+                                        <h1><span class="title-icon"></span><i class="icon-pencil"></i>Reviews</h1>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="infoBoxContents hover">
+                            <div class="box-padd">
+                                <div class="pic_padd wrapper_pic_div" style="width:230px;height:206px;">
+                                    <a class="prods_pic_bg" href="" style="width:230px;height:206px;"><img src="images/products/p5-1.jpg" alt="Mauris sed lacus entum" title="Mauris sed lacus entum" style="width:230px;height:206px;margin:0px 0px 0px 0px;" width="230" height="206">
+                                    </a>
+                                </div>
+                                <div class="name name_padd"><span><a href="">Mauris sed lacus entum</a></span></div>
+                                <div class="stars_padd"><img src="images/icons/stars_5.png" alt="5 of 5 Stars!" title="5 of 5 Stars!" width="119" height="21"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="infoBoxWrapper specials box2">
+                    <div class="box_wrapper">
+                        <div class="infoBoxHeading">
+                            <div class="box_wrapper_title22">
+                                <div class="box_wrapper_title">
+                                    <h1><span class="title-icon"></span><a href=""><i class="icon-certificate"></i>Specials</a></h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="infoBoxContents hover">
+                            <div class="pic_padd wrapper_pic_div" style="width:230px;height:206px;">
+                                <a class="prods_pic_bg" href="" style="width:230px;height:206px;"><img src="images/products/p9-1.jpg" alt="Mauris sed lacus entum" title="Mauris sed lacus entum" style="width:230px;height:206px;margin:0px 0px 0px 0px;" width="230" height="206">
+                                </a>
+                            </div>
+                            <div class="box-padd">
+                                <div class="name name_padd"><span><a href="">Mauris sed lacus entum</a></span></div>
+                                <div class="price price_padd"><b>Price:&nbsp;&nbsp;</b><del>$299.99</del><span class="productSpecialPrice">$5.00</span></div>
+                                <div class="button"><strong class="button_details"><a href="" class=""><span class="ui-button-text">Details</span></a></strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="infoBoxWrapper list last">
+                    <div class="box_wrapper">
+                        <div class="infoBoxHeading">
+                            <div class="box_wrapper_title22">
+                                <div class="box_wrapper_title">
+                                    <h1><span class="title-icon"></span><i class="icon-info-sign"></i>Information</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="infoBoxContents">
+                            <ul class="information">
+                                <li class="first">
+                                    <div class="div_2"> <a href=""><i class="icon-ok"></i>Shipping &amp; Returns</a></div>
+                                </li>
+                                <li>
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i>Privacy Notice</a></div>
+                                </li>
+                                <li>
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i>Conditions of Use</a></div>
+                                </li>
+                                <li class="last">
+                                    <div class="div_2"><a href=""><i class="icon-ok"></i>Contact Us</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

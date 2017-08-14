@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<!--<div class="col-md-12">
     <a routerLink="/basket">Товаров в корзине: {{basketCount}} на сумму: {{totalPrice}}</a>
     <a *ngIf="!userId" type="button" (click)="openModal(loginTemplate)">Вход</a>
     <a type="button" (click)="openModal(registrationTemplate)">Регистрация</a>
@@ -43,8 +43,8 @@
             <reset-password></reset-password>
         </div>
     </ng-template>
-</div>
-<div class="col-md-12">
+</div>-->
+<!--<div class="col-md-12">
     <ul class="nav col-md-2">
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="col-md-12">
             <a routerLink="">Главная</a>
@@ -59,4 +59,182 @@
     <div class="col-md-10">
         <router-outlet></router-outlet>
     </div>
+</div>-->
+<p id="back-top"><a href="#top"><span><i class="icon-chevron-sign-up"></i></span></a></p>
+<!-- bodyWrapper  -->
+<div id="bodyWrapper" class="bg_body ru index_page">
+
+    <div>
+        <div class="extra_line"></div>
+
+        <div class="wrapper">
+
+            <div class="row_1">
+
+                <div class="container_12">
+                    <div class="grid_12">
+
+                        <div id="header">
+                            <div id="box_search" class="search">
+                                <form name="quick_find" action="" method="get">
+                                    <div class="input-width ">
+                                        <input type="text" name="keywords" value="Поиск по сайту" size="10" maxlength="300" class="go fl_left" onblur="if(this.value=='') this.value='Поиск по сайту'" onfocus="if(this.value =='Поиск по сайту' ) this.value=''" /><input
+                                            type="hidden" name="osCsid" value="rk2i8djdipr5poe44b6eilqmv5" />
+                                    </div>
+                                    <button id="tdb1" type="submit">Поиск</button>
+                                    <label class="fl_left">Поиск</label>
+                                </form>
+                            </div>
+                            <div class="box_header_cart destination">
+                                <a class="cart_l" routerLink="/basket">
+                                    <i class="icon-shopping-cart"></i>
+                                    <label>моя корзина:</label><span><span>в корзине </span><strong>{{basketCount}}</strong> товаров</span>
+                                </a>
+                            </div>
+                            <div class="box_header_user_menu">
+                                <ul class="user_menu">
+                                    <li class="">
+                                        <a href="">
+                                            <div class="button-t"><span>Доставка</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="">
+                                            <div class="button-t"><span>Расширенный поиск</span></div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="">
+                                            <div class="button-t"><span>Регистрация</span></div>
+                                        </a>
+                                    </li>
+                                    <li class=" Вход"><a href="">Вход</a></li>
+                                </ul>
+                            </div>
+                            <div class="boxes_menu">
+                                <div class="menu">
+                                    <ul>
+                                        <li routerLinkActive=" act" [routerLinkActiveOptions]="{exact:true}">
+                                            <a routerLink="">Главная</a>
+                                        </li>
+                                        <li routerLinkActive=" act">
+                                            <a routerLink="/items">Товары</a>
+                                        </li>
+                                        <li routerLinkActive=" act">
+                                            <a routerLink="/contacts">Контакты</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a class="logo" href=""><img src="images/store_logo.png" alt="Food Store" title="Food Store" width="221" height="57" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row_3">
+                Slider here
+            </div>
+            <div class="row_12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+        <!--   bodyWrapper //-->
+        <div class="row_5">
+            <div class="foot_inner container_12">
+                <div class="grid_12">
+                    <div class="boxes_footer">
+                        <div class="Footer_BoxWrapper fl_left">
+                            <h4 class="Footer_BoxHeading">Главное меню</h4>
+                            <ul>
+                                <li class=" act">
+                                    <a href="">Главная страница</a>
+                                </li>
+                                <li class="">
+                                    <a href="">Рекомендуемые</a>
+                                </li>
+                                <li class="">
+                                    <a href="">Новинки</a>
+                                </li>
+                                <li class="">
+                                    <a href="">Скидки</a>
+                                </li>
+                                <li class="">
+                                    <a href="">Отзывы</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="Footer_BoxWrapper fl_left">
+                            <h4 class="Footer_BoxHeading">Наши предложения</h4>
+                            <ul class="information">
+                                <li class="">
+                                    <div class="div_2"><a href="">Лидеры продаж</a></div>
+                                </li>
+                                <li class="">
+                                    <div class="div_2"><a href="">Производители</a></div>
+                                </li>
+                                <li class="">
+                                    <div class="div_2"><a href="">Поставщики</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="Footer_BoxWrapper fl_left">
+                            <h4 class="Footer_BoxHeading">Мои данные</h4>
+                            <ul class="information">
+                                <li class="0">
+                                    <div class="div_2"><a href="">Зарегистрироваться</a></div>
+                                </li>
+                                <li class="0">
+                                    <div class="div_2"><a href="">Доставка и Возврат</a></div>
+                                </li>
+                                <li class="">
+                                    <a href="">Расширеный поиск</a>
+                                </li>
+                                <li class="0">
+                                    <div class="div_2"><a href="">Вход</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="Footer_BoxWrapper fl_left contact_footer">
+                            <h4 class="Footer_BoxHeading">Обратная связь</h4>
+                            <ul class="information">
+                                <li class="line_1"><i class="icon-map-marker"></i>Company Inc., 8901 Marmora Road,<br/> Glasgow, D04 89GR</li>
+                                <li class="line_2"><i class="icon-phone"></i><span>Teл:1(234) 567-8901</span></li>
+                                <li class="line_3"><i class="icon-envelope"></i><span>Teл:1(234) 567-8902</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row_8">
+                <div class="foot_inner container_">
+                    <div class="grid_">
+
+                        <div class="footer">
+                            <p> <a href="">Food Store</a>&nbsp;&nbsp; &copy; 2017<b>&nbsp;&nbsp;<a class="first" href="">Секретность</a> &nbsp;&nbsp;|&nbsp;&nbsp;<a class="last" href="">Условия использования</a></b>
+                                <!-- {%FOOTER_LINK} -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
+
+<!--[if lt IE 9]>
+      <link href="css/ie_style.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+<script type="text/javascript" src="ext/js/imagepreloader.js"></script>
+<script type="text/javascript">
+    preloadImages([
+        //	'images/user_menu.gif',
+        'images/bg_list.png',
+        'images/hover_bg.png',
+        'images/nivo-nav.png',
+        'images/wrapper_pic.png',
+        'images/wrapper_pic-act.png'
+    ]);
+</script>

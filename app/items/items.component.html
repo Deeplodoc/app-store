@@ -1,4 +1,4 @@
-<h2>Каталог товаров</h2>
+<!--<h2>Каталог товаров</h2>
 <div class="col-md-12">
     <div class="col-md-3 itemContainer" *ngFor="let product of items">
         <img class="col-md-2" src="{{product.picture}}" />
@@ -9,6 +9,187 @@
         <div class="col-md-12">
             <button class="btn btn-success pull-right" (click)="onAddToBasket(product)">В корзину</button>
             <button class="btn btn-info pull-right" [routerLink]="['/items', product.id]">Подробно</button>
+        </div>
+    </div>
+</div>-->
+<div class="container_12">
+    <div class="grid_12">
+        <div class="breadcrumb">&nbsp;&nbsp;
+            <a href="" class="headerNavigation">Магазин</a>
+            <i class="icon-double-angle-right"></i>
+            <a href="" class="headerNavigation">Каталог</a>
+            <i class="icon-double-angle-right"></i>
+            <a href="" class="headerNavigation last">Рекомендуемые товары</a>
+        </div>
+    </div>
+</div>
+<div class="container_12">
+    <div id="bodyContent" class="grid_9 push_3 ">
+        <div class="box_wrapper_title22">
+            <div class="box_wrapper_title"><span class="title-icon"></span>
+                <h1>Рекомендуемые товары</h1>
+            </div>
+        </div>
+        <div class="result result1_top">
+            <div class="result1_bottom">
+                <div class="cl_both result_top_padd ofh">
+                    <div class="fl_left result_left">Показано</div>
+                    <div class="fl_right result_right">Страницы: &nbsp;<b>1</b>&nbsp;&nbsp;<a href="" class="pageResults" title=" Страница 2 "><u>2</u></a>&nbsp;&nbsp;<a href="" class="pageResults next" title=" Следующая страница "><u>Следующая</u></a>&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <div class="contentContainer page_new_product first last">
+            <div class="contentPadd">
+                <div class="prods_table">
+                    <div class="contentInfoBlock hover" *ngFor="let product of items">
+                        <div class="prods_content decks">
+                            <div class="forecastle">
+                                <ol class="masthead">
+                                    <li class="port_side left_side4">
+                                        <div class="pic_padd wrapper_pic_div" style="width:230px;height:206px;">
+                                            <a class="prods_pic_bg" href="" style="width:230px;height:206px;">
+                                                <img src="{{product.picture}}" alt="ipsum dolor sit amet" title="ipsum dolor sit amet" style="width:230px;height:206px;margin:0px 0px 0px 0px;" width="230" height="206">
+
+                                            </a>
+                                            <div class="sale">SALE</div>
+                                        </div>
+                                    </li>
+                                    <li class="starboard_side bak4">
+                                        <div class="info">
+                                            <div class="data data_padd"><span>Дата поступления:</span> Понедельник 08 Сентябрь, 2014</div>
+                                            <h2 class="name name2_padd"><span class="name"><a href="">{{product.name}}</a></span></h2>
+                                            <div class="manuf manuf_padd"><span>Производитель:</span> Visit Manufacturer-2 Website</div>
+                                            <h2 class="price price2_padd"><b>Цена:&nbsp;&nbsp;</b><span class="productSpecialPrice">{{product.price | currency:'USD':true}}</span> <del>{{product.price | currency:'USD':true}}</del></h2>
+                                            <div class="desc desc2_padd">Our Food shop was founded in 2001 and only in 2004 we've launched the online version of our store. We are glad to welcome customersfrom all over the world and offer the best food and ingredients for y...</div>
+                                            <div class="button__padd">
+                                                <strong class="button_details"><a [routerLink]="['/items', product.id]" class=""><span class="ui-button-text">Подробнее</span></a></strong>
+                                                <strong class="button_cart"><a (click)="onAddToBasket(product)" class=""><span class="ui-button-text">в Корзину</span></a></strong>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="result result2_top">
+            <div class="result2_bottom">
+                <div class="cl_both result_top_padd ofh">
+                    <div class="fl_left result_left">Показано</div>
+                    <div class="fl_right result_right">Страницы: &nbsp;<b>1</b>&nbsp;&nbsp;<a href="" class="pageResults" title=" Страница 2 "><u>2</u></a>&nbsp;&nbsp;<a href="http://livedemo00.template-help.com/osc_51200/featured_products.php?page=2&amp;osCsid=hp7qrk8mubfcvfmqofuvlap553"
+                            class="pageResults next" title=" Следующая страница "><u>Следующая</u></a>&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="columnLeft" class="grid_3 pull_9">
+        <div>
+            <div class="infoBoxWrapper list border_none first">
+                <div class="box_wrapper">
+                    <div class="infoBoxHeading">
+                        <div class="box_wrapper_title22">
+                            <div class="box_wrapper_title">
+                                <h1><span class="title-icon"></span><i class="icon-reorder"></i>Категории</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infoBoxContents">
+                        <ul class="categories">
+                            <li class="first">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">VEGETABLES</div></a></div>
+                            </li>
+                            <li class="">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">SEAFOOD<span class="category_arrow "></span></div></a></div>
+                            </li>
+                            <li class="">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">MEAT</div></a></div>
+                            </li>
+                            <li class="">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">ENTREES</div></a></div>
+                            </li>
+                            <li class="">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">APPETIZERS</div></a></div>
+                            </li>
+                            <li class="">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">PIZZA</div></a></div>
+                            </li>
+                            <li class="">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">DESSERTS</div></a></div>
+                            </li>
+                            <li class="last">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i><div class="div_2">Etetur ipisicing</div></a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="infoBoxWrapper box2">
+                <div class="box_wrapper">
+                    <div class="infoBoxHeading">
+                        <a href="">
+                            <div class="box_wrapper_title22">
+                                <div class="box_wrapper_title">
+                                    <h1><span class="title-icon"></span><i class="icon-pencil"></i>Отзывы</h1>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="infoBoxContents">
+                        Ещё нет ни одного отзыва
+                    </div>
+                </div>
+            </div>
+            <div class="infoBoxWrapper specials box2">
+                <div class="box_wrapper">
+                    <div class="infoBoxHeading">
+                        <div class="box_wrapper_title22">
+                            <div class="box_wrapper_title">
+                                <h1><span class="title-icon"></span><a href=""><i class="icon-certificate"></i>Скидки</a></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infoBoxContents hover">
+                        <div class="pic_padd wrapper_pic_div" style="width:230px;height:206px;">
+                            <a class="prods_pic_bg" href="" style="width:230px;height:206px;"><img src="images/products/045.png" alt="ipsum sit amet dolor" title="ipsum sit amet dolor" style="width:230px;height:206px;margin:0px 0px 0px 0px;" width="230" height="206">
+                            </a>
+                        </div>
+                        <div class="box-padd">
+                            <div class="name name_padd"><span><a href="">ipsum sit amet dolor </a></span></div>
+                            <div class="price price_padd"><b>Цена:&nbsp;&nbsp;</b><del>$69.96</del><span class="productSpecialPrice">$3.19</span></div>
+                            <div class="button"><strong class="button_details"><a href="" class=""><span class="ui-button-text">Подробнее</span></a></strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="infoBoxWrapper list last">
+                <div class="box_wrapper">
+                    <div class="infoBoxHeading">
+                        <div class="box_wrapper_title22">
+                            <div class="box_wrapper_title">
+                                <h1><span class="title-icon"></span><i class="icon-info-sign"></i>Информация</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infoBoxContents">
+                        <ul class="information">
+                            <li class="first">
+                                <div class="div_2"> <a href=""><i class="icon-ok"></i>Доставка</a></div>
+                            </li>
+                            <li>
+                                <div class="div_2"><a href=""><i class="icon-ok"></i>Приватность</a></div>
+                            </li>
+                            <li>
+                                <div class="div_2"><a href=""><i class="icon-ok"></i>Условия использования</a></div>
+                            </li>
+                            <li class="last">
+                                <div class="div_2"><a href=""><i class="icon-ok"></i>Контакты</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

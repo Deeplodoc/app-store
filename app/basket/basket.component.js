@@ -32,8 +32,7 @@ var BasketComponent = (function () {
 BasketComponent = __decorate([
     core_1.Component({
         selector: 'basket-app',
-        templateUrl: 'app/basket/basket.component.html',
-        styleUrls: ['app/basket/basket.component.css']
+        templateUrl: 'app/basket/basket.component.html'
     }),
     __metadata("design:paramtypes", [basket_service_1.BasketService])
 ], BasketComponent);

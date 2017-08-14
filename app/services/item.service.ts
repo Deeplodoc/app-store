@@ -19,7 +19,7 @@ export class ItemService{
                 let item = itemsList[index];
                 items.push({
                     id: item.id,
-                    picture: item.picture,
+                    picture: /*item.picture*/"images/products/043.png",
                     name: item.name,
                     price: item.price,
                     description: item.description
