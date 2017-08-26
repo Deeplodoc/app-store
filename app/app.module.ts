@@ -33,6 +33,7 @@ const appRoutes: Routes = [
     { path: 'basket', component: BasketComponent },
     { path: 'profile/:userId', component: UserProfileComponent },
     { path: 'forgotPassword', component: ForgotPasswordComponent },
+    { path: 'registration', component: RegisterComponent },
     { path: '**', component: NotFoundComponent }
 ];
 

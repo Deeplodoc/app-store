@@ -25,7 +25,7 @@
                                     <th class="th3">Total</th>
                                     <th class="th1"></th>
                                 </tr>
-                                <tr class="row" *ngFor="let item of items">
+                                <tr class="row" *ngFor="let itemViewModel of items">
                                     <td class="cart_prod_img">
                                         <div class="pic_padd wrapper_pic_div" style="width:230px;height:206px;">
                                             <a class="prods_pic_bg" href="images/products/044.png" style="width:230px;height:206px;"><img src="images/products/044.png" alt="ipsum dolor sit amet" title="ipsum dolor sit amet" style="width:230px;height:206px;margin:0px 0px 0px 0px;" width="230" height="206"></a>
@@ -37,7 +37,7 @@
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="name name_padd equal-height" style="min-height: 19px;">
-                                                            <div><span><a href="">{{item.name}}</a></span></div>
+                                                            <div><span><a href="">{{itemViewModel.item.name}}</a></span></div>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -49,7 +49,7 @@
                                             </tbody>
                                         </table>
                                     </td>
-                                    <td class="cart_update"><input name="cart_quantity[]" value="1" size="6" type="text"><br><br>
+                                    <td class="cart_update"><input name="cart_quantity[]" value={{itemViewModel.count}} size="6" type="text"><br><br>
                                         <div class="buttonSet">
                                             <input name="products_id[]" value="16{1}2{2}3" type="hidden">
                                             <strong class="button_cart">
@@ -57,10 +57,10 @@
                                             </strong>
                                         </div>
                                     </td>
-                                    <td class="cart_price"><span class="productSpecialPrice">{{item.price | currency:'USD':true}}</span></td>
+                                    <td class="cart_price"><span class="productSpecialPrice">{{itemViewModel.item.price | currency:'USD':true}}</span></td>
                                     <td class="cart_row_delete">
                                         <strong class="button_cart">
-                                            <a id="tdb1" class="ui-state-default ui-corner-all ui-button-text-icon-primary ui-priority-secondary" (click)="removeItem(item.id)">
+                                            <a id="tdb1" class="ui-state-default ui-corner-all ui-button-text-icon-primary ui-priority-secondary" (click)="removeItem(itemViewModel.item.id)">
                                                 <span class="ui-button-icon-primary ui-icon ui-icon-trash"></span>
                                                 <span class="ui-button-text">Remove</span>
                                             </a>

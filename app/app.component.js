@@ -28,6 +28,7 @@ var AppComponent = (function () {
         }
     }
     AppComponent.prototype.openModal = function (template) {
+        console.log('open modal');
         this.modalRef = this.modalService.show(template);
     };
     AppComponent.prototype.exit = function () {

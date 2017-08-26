@@ -6,10 +6,10 @@ var Basket = (function () {
     }
     Basket.prototype.getItems = function () {
         return this.items.sort(function (a, b) {
-            if (a.id > b.id) {
+            if (a.item.id > b.item.id) {
                 return 1;
             }
-            if (a.id < b.id) {
+            if (a.item.id < b.item.id) {
                 return -1;
             }
             return 0;
@@ -17,7 +17,16 @@ var Basket = (function () {
     };
     Basket.prototype.addItem = function (item) {
         if (item != null && item != undefined) {
-            this.items.push(item);
+            if (this.exists(item.id)) {
+                var itemViewModel = this.getItemViewModelById(item.id);
+                itemViewModel.count = itemViewModel.count + 1;
+            }
+            else {
+                this.items.push({
+                    item: item,
+                    count: 1
+                });
+            }
             this.totalPrice += item.price;
         }
     };
@@ -25,15 +34,36 @@ var Basket = (function () {
         return this.totalPrice;
     };
     Basket.prototype.getItemsCount = function () {
-        return this.items.length;
+        if (this.items.length != 0) {
+            return this.items.map(function (item) {
+                return item.count;
+            })
+                .reduce(function (sum, current) { return sum += current; });
+        }
+        else {
+            return 0;
+        }
     };
     Basket.prototype.removeItem = function (id) {
-        var item = this.items.find(function (item) { return item.id == id; });
-        var index = this.items.indexOf(item);
+        var itemViewModel = this.getItemViewModelById(id);
+        var index = this.items.indexOf(itemViewModel);
         if (index != -1) {
-            this.items.splice(index, 1);
-            this.totalPrice = this.totalPrice - item.price;
+            if (itemViewModel.count == 1) {
+                this.items.splice(index, 1);
+            }
+            else {
+                itemViewModel.count = itemViewModel.count - 1;
+            }
+            this.totalPrice = this.totalPrice - itemViewModel.item.price;
         }
+    };
+    Basket.prototype.getItemViewModelById = function (id) {
+        return this.items.find(function (item) { return item.item.id == id; });
+    };
+    Basket.prototype.exists = function (id) {
+        return this.items.map(function (item) {
+            return item.item.id;
+        }).some(function (i) { return i == id; });
     };
     return Basket;
 }());

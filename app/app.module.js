@@ -37,6 +37,7 @@ var appRoutes = [
     { path: 'basket', component: basket_component_1.BasketComponent },
     { path: 'profile/:userId', component: user_profile_component_1.UserProfileComponent },
     { path: 'forgotPassword', component: forgot_password_component_1.ForgotPasswordComponent },
+    { path: 'registration', component: register_component_1.RegisterComponent },
     { path: '**', component: not_found_component_1.NotFoundComponent }
 ];
 var AppModule = (function () {

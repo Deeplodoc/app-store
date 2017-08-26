@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
     }
 
     public openModal(template: TemplateRef<any>): void{
+        console.log('open modal');
         this.modalRef = this.modalService.show(template);
     }
     

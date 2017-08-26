@@ -4,6 +4,7 @@ import { Item } from '../models/item';
 import { ChanchedBasket } from '../models/eventModels/chanched.basket';
 import { SessionService } from '../services/session.service';
 import { SessionName } from '../enums/session.name';
+import { ItemViewModel } from "../models/viewModels/item.view.model";
 
 @Injectable()
 export class BasketService{
@@ -31,7 +32,7 @@ export class BasketService{
         return this.basket;
     }
 
-    getItems(): Item[]{
+    getItems(): ItemViewModel[]{
         return this.basket.getItems();
     }
 

@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
+<!--<form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
     <div class="form-group">
         <label>Фамилия</label>
         <input class="form-control" name="firstName" formControlName="firstName" />
@@ -39,4 +39,142 @@
     <div class="form-group ">
         <button class="btn btn-success" [disabled]="registerForm.invalid">Ok</button>
     </div>
+</form>-->
+<div class="container_12">
+    <div class="grid_12">
+    <div class="breadcrumb">&nbsp;&nbsp;
+        <a href="http://livedemo00.template-help.com" class="headerNavigation">Top</a> <i class="icon-double-angle-right"></i>
+        <a href="http://livedemo00.template-help.com/osc_51200/index.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961" class="headerNavigation">Catalog</a> <i class="icon-double-angle-right"></i>
+        <a href="http://livedemo00.template-help.com/osc_51200/create_account.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961" class="headerNavigation last">Create an Account</a>    
+    </div>
+    </div>        
+</div>
+<div class="container_12">
+  <div id="bodyContent" class="grid_9 push_3 ">
+<div class="box_wrapper_title22"><div class="box_wrapper_title"><span class="title-icon"></span><h1>My Account Information</h1>
+</div></div>
+
+<p class="infoString"><font color="#FF0000"><small><strong>NOTE:</strong></small></font> If you already have an account with us, please login at the <a href="http://livedemo00.template-help.com/osc_51200/login.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><u>login page</u></a>.</p>
+
+<form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
+<div class="contentContainer off first last">
+  <div class="contentPadd">
+
+  <div class="contentInfoText">
+    <h3 class="first_h3">Your Personal Details</h3>
+    <div class="form-group fieldValue">
+        <label class="table_lable">Login:</label>
+        <input type="text" class="input" name="login" formControlName="login" />
+        &nbsp;<span class="inputRequirement">*</span>
+        <div *ngIf="registerForm.controls['login'].hasError('required') && registerForm.controls['login'].touched" class="alert alert-danger">Введите логин.</div>
+        <div *ngIf="registerForm.controls['login'].hasError('minlength') && registerForm.controls['login'].touched" class="alert alert-danger">Минимальная длина 3 символа.</div>
+    </div>
+    <div class="form-group fieldValue">
+        <label class="table_lable">Email:</label>
+        <input type="text" class="input" name="email" formControlName="email" />
+        &nbsp;<span class="inputRequirement">*</span>
+        <div *ngIf="registerForm.controls['email'].hasError('required') && registerForm.controls['email'].touched" class="alert alert-danger">Введите Email.</div>
+        <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="alert alert-danger">Некоректный email.</div>
+    </div>
+    <div class="form-group fieldValue">
+        <label class="table_lable">First Name:</label>
+        <input type="text" class="input" name="firstName" formControlName="firstName" />
+    </div>
+    <div class="form-group fieldValue">
+        <label class="table_lable">Last Name:</label>
+        <input type="text" class="input"name="lastName" formControlName="lastName" />
+    </div>
+    <div class="form-group fieldValue">
+        <label class="table_lable">Birth:</label>
+        <p-calendar class="input" [locale]="dateLocale" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" name="bDay" formControlName="bDay"></p-calendar>
+    </div>
+  </div>
+
+  <div class="contentInfoText">
+    <h3>Your Address</h3>
+    <div class="form-group fieldValue">
+        <label class="table_lable">Address:</label>
+        <input type="text" class="input" name="address" formControlName="address" />
+    </div>
+  </div>
+
+  <div class="contentInfoText">
+   <h3>Your Contact Information</h3>
+   <div class="form-group fieldValue">
+        <label class="table_lable">Phone:</label>
+        <input type="text" class="input" name="phone" formControlName="phone" />
+    </div>
+  </div>
+
+  <div class="contentInfoText marg-bottom">
+    <h3>Your Password</h3>
+    <div class="form-group fieldValue">
+        <label class="table_lable">Пароль</label>
+        <input type="password" class="input" name="password" formControlName="password" />
+        &nbsp;<span class="inputRequirement">*</span>
+        <div *ngIf="registerForm.controls['password'].hasError('required') && registerForm.controls['password'].touched" class="alert alert-danger">Введите пароль.</div>
+    </div>
+  </div>
+<div class="buttonset1">
+    <button class="btn btn-success" [disabled]="registerForm.invalid">Continue</button>
+</div>
+
+</div>
+</div>
 </form>
+			</div>
+			 <!-- bodyContent //-->
+                <div id="columnLeft" class="grid_3 pull_9">
+                  <div><div class="infoBoxWrapper list border_none first"><div class="box_wrapper">  <div class="infoBoxHeading"><div class="box_wrapper_title22"><div class="box_wrapper_title"><h1><span class="title-icon"></span><i class="icon-reorder"></i>Categories</h1></div></div>
+</div>  <div class="infoBoxContents">
+<ul class="categories"><li class="first"><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/index.php/vegetables-c-1?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i><div class="div_2">VEGETABLES</div>
+</a></div></li><li class=""><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/index.php/seafood-c-2?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i><div class="div_2">SEAFOOD<span class="category_arrow "></span></div>
+</a></div></li><li class=""><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/index.php/meat-c-3?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i><div class="div_2">MEAT</div>
+</a></div></li><li class=""><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/index.php/entrees-c-4?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i><div class="div_2">ENTREES</div>
+</a></div></li><li class=""><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/index.php/appetizers-c-5?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i><div class="div_2">APPETIZERS</div>
+</a></div></li><li class=""><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/index.php/pizza-c-6?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i><div class="div_2">PIZZA</div>
+</a></div></li><li class=""><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/index.php/desserts-c-7?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i><div class="div_2">DESSERTS</div>
+</a></div></li><li class="last"><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/index.php/etetur-ipisicing-c-8?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i><div class="div_2">Etetur ipisicing</div>
+</a></div></li></ul>
+</div></div>
+</div>
+<div class="infoBoxWrapper box2"><div class="box_wrapper">  <div class="infoBoxHeading"><a href="http://livedemo00.template-help.com/osc_51200/reviews.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><div class="box_wrapper_title22"><div class="box_wrapper_title"><h1><span class="title-icon"></span><i class="icon-pencil"></i>Reviews</h1></div></div>
+</a></div>  <div class="infoBoxContents hover">
+
+   <div class="box-padd">
+		<div class="pic_padd wrapper_pic_div" style="width:230px;height:206px;"><a class="prods_pic_bg" href="http://livedemo00.template-help.com/osc_51200/product_reviews_info.php/mauris-sed-lacus-entum-pri-2?reviews_id=17&amp;osCsid=kcp83jbg0ci0fc0ssa9if1o961" style="width:230px;height:206px;"><img src="images/products/p2-1.jpg" alt="Mauris sed lacus entum" title="Mauris sed lacus entum" width="230" height="206" style="width:230px;height:206px;margin:0px 0px 0px 0px;">
+
+</a></div>
+			<div class="name name_padd"><span><a href="http://livedemo00.template-help.com/osc_51200/product_info.php/mauris-sed-lacus-entum-p-2?osCsid=kcp83jbg0ci0fc0ssa9if1o961">Mauris sed lacus entum</a></span></div>
+		
+		<div class="stars_padd"><img src="images/icons/stars_4.png" alt="4 of 5 Stars!" title="4 of 5 Stars!" width="119" height="21"></div>
+		</div>
+
+</div></div>
+</div>
+<div class="infoBoxWrapper specials box2"><div class="box_wrapper">  <div class="infoBoxHeading"><div class="box_wrapper_title22"><div class="box_wrapper_title"><h1><span class="title-icon"></span><a href="http://livedemo00.template-help.com/osc_51200/specials.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-certificate"></i>Specials</a></h1></div></div>
+</div>  <div class="infoBoxContents hover">
+   <div class="pic_padd wrapper_pic_div" style="width:230px;height:206px;"><a class="prods_pic_bg" href="http://livedemo00.template-help.com/osc_51200/product_info.php/mauris-sed-lacus-entum-p-8?osCsid=kcp83jbg0ci0fc0ssa9if1o961" style="width:230px;height:206px;"><img src="images/products/p8-1.jpg" alt="Mauris sed lacus entum" title="Mauris sed lacus entum" width="230" height="206" style="width:230px;height:206px;margin:0px 0px 0px 0px;">
+
+</a></div>
+   <div class="box-padd">
+     <div class="name name_padd"><span><a href="http://livedemo00.template-help.com/osc_51200/product_info.php/mauris-sed-lacus-entum-p-8?osCsid=kcp83jbg0ci0fc0ssa9if1o961">Mauris sed lacus entum</a></span></div>
+     <div class="price price_padd"><b>Price:&nbsp;&nbsp;</b><del>$35.99</del><span class="productSpecialPrice">$29.99</span></div>
+           
+     <div class="button"><strong class="button_details"><a href="http://livedemo00.template-help.com/osc_51200/product_info.php?products_id=8?osCsid=kcp83jbg0ci0fc0ssa9if1o961" class=""><span class="ui-button-text">Details</span></a></strong></div>
+   </div>
+
+</div>
+</div>
+</div>
+<div class="infoBoxWrapper list last"><div class="box_wrapper">  <div class="infoBoxHeading"><div class="box_wrapper_title22"><div class="box_wrapper_title"><h1><span class="title-icon"></span><i class="icon-info-sign"></i>Information</h1></div></div>
+</div>  <div class="infoBoxContents">
+  <ul class="information">    <li class="first"><div class="div_2"> <a href="http://livedemo00.template-help.com/osc_51200/shipping.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i>Shipping &amp; Returns</a></div>
+</li>    <li><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/privacy.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i>Privacy Notice</a></div>
+</li>    <li><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/conditions.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i>Conditions of Use</a></div>
+</li>    <li class="last"><div class="div_2"><a href="http://livedemo00.template-help.com/osc_51200/contact_us.php?osCsid=kcp83jbg0ci0fc0ssa9if1o961"><i class="icon-ok"></i>Contact Us</a></div>
+</li>  </ul>
+</div></div>
+</div></div>
+                </div>
+</div>
